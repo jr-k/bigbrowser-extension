@@ -1,0 +1,19 @@
+{
+	"name": "@bigbrowser/firefox",
+	"version": "4.0.0",
+	"description": "Big Browser extension for Firefox (Manifest V3, shares its sources with the Chrome extension)",
+	"private": true,
+	"scripts": {
+		"build": "webpack --mode production",
+		"dev": "webpack --mode development --watch",
+		"zip": "cd dist && zip -r ../bigbrowser-firefox.zip . -x '*.map'"
+	},
+	"devDependencies": {
+		"@bigbrowser/core": "4.0.0",
+		"copy-webpack-plugin": "^12.0.2",
+		"ts-loader": "^9.5.2",
+		"typescript": "^5.7.3",
+		"webpack": "^5.97.1",
+		"webpack-cli": "^5.1.4"
+	}
+}

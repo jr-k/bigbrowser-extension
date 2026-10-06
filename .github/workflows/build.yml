@@ -1,0 +1,34 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  extensions:
+    name: Chrome + Firefox
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm run typecheck
+
+      - name: Package extensions
+        run: |
+          (cd chrome/dist && zip -qr ../../bigbrowser-chrome.zip . -x '*.map')
+          (cd firefox/dist && zip -qr ../../bigbrowser-firefox.zip . -x '*.map')
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extensions
+          path: |
+            bigbrowser-chrome.zip
+            bigbrowser-firefox.zip

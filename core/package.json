@@ -1,0 +1,39 @@
+{
+	"name": "@bigbrowser/core",
+	"version": "4.0.0",
+	"description": "Big Browser core: SDK for plugin authors and runtime orchestrating tweaks on a page",
+	"main": "build/index.js",
+	"types": "build/types/index.d.ts",
+	"files": [
+		"build"
+	],
+	"scripts": {
+		"start": "webpack serve --config webpack.config.sandbox.js",
+		"build": "webpack && tsc",
+		"build:sandbox": "webpack --config webpack.config.sandbox.js",
+		"typecheck": "tsc --noEmit"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jr-k/bigbrowser-extension",
+		"directory": "core"
+	},
+	"author": "JRK (https://github.com/jr-k)",
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "^7.26.0",
+		"@babel/plugin-proposal-class-properties": "^7.18.6",
+		"@babel/plugin-transform-typescript": "^7.26.3",
+		"@babel/preset-env": "^7.26.0",
+		"babel-loader": "^9.2.1",
+		"html-webpack-plugin": "^5.6.3",
+		"terser-webpack-plugin": "^5.3.11",
+		"typescript": "^5.7.3",
+		"webpack": "^5.97.1",
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^5.2.0"
+	},
+	"dependencies": {
+		"uri-template-router": "^0.0.12"
+	}
+}

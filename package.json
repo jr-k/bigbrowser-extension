@@ -1,0 +1,27 @@
+{
+	"name": "bigbrowser",
+	"version": "4.0.0",
+	"description": "Big Browser core SDK and browser extensions",
+	"private": false,
+	"main": "core/build/index.js",
+	"types": "core/build/types/index.d.ts",
+	"workspaces": [
+		"core",
+		"chrome",
+		"firefox"
+	],
+	"scripts": {
+		"build": "npm run build --workspace core && npm run build --workspace chrome && npm run build --workspace firefox",
+		"build:core": "npm run build --workspace core",
+		"build:chrome": "npm run build --workspace chrome",
+		"build:firefox": "npm run build --workspace firefox",
+		"typecheck": "npm run typecheck --workspaces --if-present",
+		"prepare": "npm run build --workspace core"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jr-k/bigbrowser-extension"
+	},
+	"author": "JRK (https://github.com/jr-k)",
+	"license": "MIT"
+}

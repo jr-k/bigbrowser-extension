@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Big Browser — Settings</title>
+		<link rel="stylesheet" href="theme.css" />
+		<link rel="stylesheet" href="options.css" />
+	</head>
+	<body>
+		<div class="layout">
+			<aside class="side">
+				<header class="brand">
+					<svg class="mark draw" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false">
+						<path d="M5 32C13 17.5 22 11 32 11s19 6.5 27 21c-8 14.5-17 21-27 21S13 46.5 5 32Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" />
+						<circle cx="32" cy="32" r="11.5" fill="url(#brand-gradient)" />
+						<circle cx="32" cy="32" r="4.5" fill="var(--bg-sunken)" />
+						<path class="mark-cut" d="M13 53 51 11" stroke="var(--mark-bg)" stroke-width="7" stroke-linecap="round" pathLength="1" />
+						<path class="mark-slash" d="M13 53 51 11" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" pathLength="1" />
+						<defs>
+							<linearGradient id="brand-gradient" x1="20" y1="18" x2="46" y2="48" gradientUnits="userSpaceOnUse">
+								<stop stop-color="var(--blue)" />
+								<stop offset="1" stop-color="var(--mint)" />
+							</linearGradient>
+						</defs>
+					</svg>
+					<div>
+						<h1>Big Browser</h1>
+						<p class="brand-copy">Private tweaks, under your control.</p>
+					</div>
+					<p id="version" class="data muted"></p>
+				</header>
+
+				<section class="panel">
+					<h2 class="section-title">Index server</h2>
+					<form id="server-form" class="field" autocomplete="off">
+						<label for="server-url">Where the plugin catalogue lives</label>
+						<input id="server-url" class="input" type="url" placeholder="http://127.0.0.1:8001" spellcheck="false" />
+						<div class="row">
+							<button type="submit" class="btn btn-primary" id="server-save">Save and refresh</button>
+							<span id="index-pill" class="pill">Unknown</span>
+						</div>
+					</form>
+					<div id="index-meta" class="meta data"></div>
+					<div id="index-error" class="notice bad" hidden></div>
+				</section>
+
+				<section class="panel">
+					<h2 class="section-title">Injection engine</h2>
+					<div class="row">
+						<span id="engine-pill" class="pill">Checking…</span>
+						<button type="button" class="btn btn-ghost" id="engine-recheck">Recheck</button>
+					</div>
+					<div id="engine-help" class="notice warn" hidden></div>
+					<div id="engine-errors" class="notice bad" hidden></div>
+					<div id="engine-meta" class="meta data"></div>
+				</section>
+
+				<section class="panel">
+					<h2 class="section-title">Options</h2>
+					<div class="row between">
+						<div>
+							<div>Debug logs</div>
+							<div class="hint">Verbose runtime output in the page console</div>
+						</div>
+						<span id="debug-toggle"></span>
+					</div>
+				</section>
+
+				<footer class="foot">Plugins are indexed from <a id="repo-link" href="#" target="_blank" rel="noreferrer">the plugins repository</a>.</footer>
+			</aside>
+
+			<main class="main">
+				<header class="main-head">
+					<div>
+						<h2>Your plugins <span id="plugin-count" class="count data"></span></h2>
+						<p class="main-copy">Choose exactly what runs on the sites you use.</p>
+					</div>
+					<div class="row">
+						<input id="filter" class="input" type="search" placeholder="Filter plugins and tweaks" />
+						<button type="button" class="btn" id="refresh">Refresh index</button>
+					</div>
+				</header>
+				<div id="plugins"></div>
+			</main>
+		</div>
+		<script src="options.js"></script>
+	</body>
+</html>
